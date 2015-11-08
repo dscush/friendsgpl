@@ -52,6 +52,7 @@ class Member(models.Model):
         blank=True,
         null=True,
     )
+    volunteer = models.BooleanField(default=False)
     @property
     def full_name(self):
         return "%s %s" % (self.first_name, self.last_name)
