@@ -2,6 +2,16 @@ from django.contrib import admin
 
 from .models import Family, Member
 
+class MemberAdmin(admin.ModelAdmin):
+    list_display = (
+        'full_name',
+        'family',
+        'volunteer',
+        'board',
+        'trustee',
+        'staff',
+    )
+
 class MemberInline(admin.TabularInline):
     model = Member
     extra = 0
@@ -31,5 +41,5 @@ class FamilyAdmin(admin.ModelAdmin):
     search_fields = ['family_name',]
 
 admin.site.register(Family, FamilyAdmin)
-admin.site.register(Member)
+admin.site.register(Member, MemberAdmin)
 
