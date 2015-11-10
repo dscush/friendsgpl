@@ -3,14 +3,19 @@ from django.contrib import admin
 from .models import Family, Member
 
 class MemberAdmin(admin.ModelAdmin):
+    def is_grafton_resident(self, m):
+        return m.family.is_grafton_resident()
+    is_grafton_resident.boolean = True
     list_display = (
         'full_name',
         'family',
+        'is_grafton_resident',
         'volunteer',
         'board',
         'trustee',
         'staff',
     )
+    search_fields = ['first_name','last_name', 'family__family_name']
 
 class MemberInline(admin.TabularInline):
     model = Member
@@ -30,7 +35,7 @@ class FamilyAdmin(admin.ModelAdmin):
     def members(self, f):
         return ', '.join([str(m) for m in f.member_set.all()])
     list_display = (
-        'family_name',
+        '__str__',
         'members',
         'last_paid',
         'is_active',
@@ -38,7 +43,7 @@ class FamilyAdmin(admin.ModelAdmin):
     )
     inlines = [MemberInline]
     #list_filter = ['last_paid',]
-    search_fields = ['family_name',]
+    search_fields = ['family_name','family_name_2']
 
 admin.site.register(Family, FamilyAdmin)
 admin.site.register(Member, MemberAdmin)
