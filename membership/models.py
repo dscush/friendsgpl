@@ -40,6 +40,8 @@ class Family(models.Model):
     is_grafton_resident.boolean = True
     is_grafton_resident.short_description = 'Grafton resident(s)?'
     def __str__(self):
+        if self.family_name_2:
+            return self.family_name + '/' + self.family_name_2
         return self.family_name
 
 class Member(models.Model):
@@ -53,6 +55,9 @@ class Member(models.Model):
         null=True,
     )
     volunteer = models.BooleanField(default=False)
+    board = models.BooleanField(default=False)
+    staff = models.BooleanField(default=False)
+    trustee = models.BooleanField(default=False)
     @property
     def full_name(self):
         return "%s %s" % (self.first_name, self.last_name)
