@@ -17,7 +17,7 @@ zip_validators = [
 class Family(models.Model):
     family_name = models.CharField(max_length=200)
     family_name_2 = models.CharField(max_length=200, blank=True, verbose_name='Alternative family name')
-    street_address_1 = models.CharField(max_length=200, blank=False)
+    street_address_1 = models.CharField(max_length=200, blank=True)
     street_address_2 = models.CharField(max_length=200, blank=True)
     zip_code = models.CharField(max_length=5, blank=False, validators=zip_validators)
     home_phone = models.IntegerField(
@@ -54,6 +54,7 @@ class Member(models.Model):
         blank=True,
         null=True,
     )
+    comment = models.CharField(max_length=200, blank=True)
     volunteer = models.BooleanField(default=False)
     board = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
