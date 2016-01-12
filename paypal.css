@@ -1,0 +1,14 @@
+fieldset.paypal {
+  border-radius: 10px;
+  width: 400px;
+}
+fieldset.paypal > div {
+  margin: 10px 0px;
+  width: 100%
+}
+fieldset.paypal > label {
+  display: inline;
+}
+fieldset.paypal > .submit {
+  margin: auto;
+}

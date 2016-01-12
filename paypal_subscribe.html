@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+<link rel="stylesheet" type="text/css" href="paypal.css">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+  <fieldset class="paypal">
+    <legend>Automatically Recurring Annual Membership</legend>
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <input type="hidden" name="hosted_button_id" value="K97Y74WV8VL5Q">
+  <div>
+    <input type="hidden" name="on0" value="">
+    <select name="os0">
+      <option value="Senior/Student">Senior/Student : $5.00 USD - yearly</option>
+      <option value="Individual">Individual : $10.00 USD - yearly</option>
+      <option value="Family">Family : $25.00 USD - yearly</option>
+      <option value="Best Friends">Best Friends : $100.00 USD - yearly</option>
+      <option value="Business">Business : $250.00 USD - yearly</option>
+    </select> 
+  </div>
+  <div>
+    <input type="hidden" name="on1" value="Would you like to volunteer?">
+    Would you like to volunteer?
+    <input type="radio" name="os1" id="os1-yes" value="Yes" required>
+    <label for="os1-yes">Yes</label>
+    <input type="radio" name="os1" id="os1-no" value="No">
+    <label for="os1-no">No</label>
+  </div>
+  <div>
+    <input type="hidden" name="on2" value="Phone Number">
+    <label for="os2">Phone Number</label>
+    <input type="tel" name="os2" id="os2" maxlength="200">
+  </div>
+  <input type="hidden" name="currency_code" value="USD">
+  <input type="image" class="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</body>
+</html>
