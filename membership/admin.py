@@ -39,6 +39,7 @@ class FamilyAdmin(admin.ModelAdmin):
         'members',
         'last_paid',
         'is_active',
+        'paid_this_fiscal_year',
         'is_grafton_resident',
     )
     inlines = [MemberInline]
