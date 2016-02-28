@@ -1,0 +1,19 @@
+{# myapp/admin/myview.html #}
+{% extends 'adminplus/base.html' %}
+
+{% block content %}
+	{% for dataset in datasets %}
+	<table class="module">
+		<caption>{{ dataset.name}}</caption>
+		{% for name, value in dataset.data.items %}
+		<tr>
+			<th>{{ name }}</th>
+			{% for datum in value %}
+			<td>{{ datum }}</td>
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+	{% endfor %}
+				
+{% endblock %}

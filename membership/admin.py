@@ -1,4 +1,7 @@
+from collections import OrderedDict
 from django.contrib import admin
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from .models import Family, Member
 
@@ -48,4 +51,33 @@ class FamilyAdmin(admin.ModelAdmin):
 
 admin.site.register(Family, FamilyAdmin)
 admin.site.register(Member, MemberAdmin)
+
+def datasheet_view(request):
+    return render_to_response(
+        'membership/admin/datasheet.html',
+        {
+            'title': 'Datasheet',
+			# TODO: Make this more pythonic and less JSONic (make dataset class)
+			'datasets': [
+				{
+					'name': 'General Membership Info',
+					'data':	OrderedDict([
+						('Number of active members', (Member.objects.active_members().count(),)),
+						('Total dues fiscal year', (Family.objects.total_dues_fiscal_year(),)),
+						('Total dues prev 12mo', (Family.objects.total_dues_prev_12mo(),)),
+					]),
+				},
+				{
+					'name': 'Dues Counts',
+					'data':	OrderedDict([
+						# TODO: organize after creating dataset class
+						('Member dues counts', (Member.objects.dues_counts(),'foo')),
+						('Family dues counts', (Family.objects.dues_counts(),'bar')),
+					]),
+				},
+			],
+        },
+        RequestContext(request, {})
+    )
+admin.site.register_view('datasheet', view=datasheet_view, name='Datasheet')
 
