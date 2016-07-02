@@ -63,8 +63,8 @@ def datasheet_view(request):
 					'name': 'General Membership Info',
 					'data':	OrderedDict([
 						('Number of active members', (Member.objects.active_members().count(),)),
-						('Total dues fiscal year', (Family.objects.total_dues_fiscal_year(),)),
-						('Total dues prev 12mo', (Family.objects.total_dues_prev_12mo(),)),
+						('Total dues fiscal year', ('$' + str(Family.objects.total_dues_fiscal_year()),)),
+						('Total dues prev 12mo', ('$' + str(Family.objects.total_dues_prev_12mo()),)),
 					]),
 				},
 				{
