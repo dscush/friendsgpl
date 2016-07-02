@@ -53,7 +53,59 @@ admin.site.register(Family, FamilyAdmin)
 admin.site.register(Member, MemberAdmin)
 
 def datasheet_view(request):
+    class Dataset():
+        def __init__(self, name, data, row_headers=None, col_headers=None):
+            self.name = name
+            self.data = data
+            self.row_headers = row_headers
+            self.col_headers = col_headers
+            self.has_row_headers = False
+            if self.row_headers:
+                self.has_row_headers = True
+                for i, data_row in enumerate(data):
+                    data_row.insert(0,row_headers[i])
+
+    mem_dues = Member.objects.dues_counts()
+    fam_dues = Family.objects.dues_counts()
+    mem_dues_data = [mem_dues[k] for k in sorted(mem_dues)]
+    fam_dues_data = [fam_dues[k] for k in sorted(fam_dues)]
+    dues_counts_col_headers = ['$' + str(x) for x in sorted(mem_dues)]
+
     return render_to_response(
+        'membership/admin/datasheet.html',
+        {
+            'title': 'Datasheet',
+            'datasets': [
+                Dataset(
+                    name='General Membership Info',
+                    data=[
+                        [Member.objects.active_members().count()],
+                        ['$' + str(Family.objects.total_dues_fiscal_year())],
+                        ['$' + str(Family.objects.total_dues_prev_12mo())],
+                    ],
+                    row_headers=(
+                        'Number of active members',
+                        'Total dues fiscal year',
+                        'Total dues prev 12mo',
+                    )
+                ),
+                Dataset(
+                    name='Dues Counts',
+                    data=[
+                        mem_dues_data,
+                        fam_dues_data,
+                    ],
+                    row_headers=(
+                        'Member dues counts',
+                        'Family dues counts',
+                    ),
+                    col_headers=dues_counts_col_headers
+                ),
+            ]
+        },
+        RequestContext(request, {})
+    )
+'''    return render_to_response(
         'membership/admin/datasheet.html',
         {
             'title': 'Datasheet',
@@ -78,6 +130,6 @@ def datasheet_view(request):
 			],
         },
         RequestContext(request, {})
-    )
+    )'''
 admin.site.register_view('datasheet', view=datasheet_view, name='Datasheet')
 

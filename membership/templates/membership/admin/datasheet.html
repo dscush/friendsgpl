@@ -2,18 +2,28 @@
 {% extends 'adminplus/base.html' %}
 
 {% block content %}
-	{% for dataset in datasets %}
-	<table class="module">
-		<caption>{{ dataset.name}}</caption>
-		{% for name, value in dataset.data.items %}
-		<tr>
-			<th>{{ name }}</th>
-			{% for datum in value %}
-			<td>{{ datum }}</td>
-			{% endfor %}
-		</tr>
-		{% endfor %}
-	</table>
-	{% endfor %}
-				
+  {% for dataset in datasets %}
+  <table class="module">
+    <caption>{{ dataset.name}}</caption>
+    {% if dataset.col_headers %}
+    <tr>
+      <th></th>
+      {% for col_header in dataset.col_headers %}
+      <th>{{ col_header}}</th>
+      {% endfor %}
+    </tr>
+    {% endif %}
+    {% for data_row in dataset.data %}
+    <tr>
+      {% for datum in data_row %}
+      {% if forloop.first and dataset.has_row_headers %}
+      <th>{{ datum }}</th>
+      {% else %}
+      <td>{{ datum }}</td>
+      {% endif %}
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endfor %}
 {% endblock %}
