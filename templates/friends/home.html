@@ -1,0 +1,21 @@
+{% extends "friends/base.html" %}
+    {% block body %}
+        <h1>{% block title %}This is a website.{% endblock %}</h1>
+        <br />
+        <br />
+        <br />
+        <div class="fb-page" data-href="https://www.facebook.com/GPLFriends/" data-tabs="events, timeline" data-height="600" data-width="500" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/GPLFriends/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/GPLFriends/">Friends of the Grafton Public Library</a>
+            </blockquote>
+        </div>
+    
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    {% endblock %}
