@@ -1,0 +1,79 @@
+$jumbotron_bg_color: #00A787;
+$navbar_bg_color: darken($jumbotron_bg_color, 7%);
+$navpill_bg_color: $jumbotron_bg_color;
+$jumbotron_color: #fff;
+$navbar_color: #fff;
+$navpill_external_color: $navbar_color;
+$navpill_external_bg_color: darken($jumbotron_bg_color, 7%);
+$navpill_hover_bg_color: darken($jumbotron_bg_color, 20%);
+
+/* Custom page header */
+header {
+	border-bottom: 1px solid #e5e5e5;
+
+	/* Make the masthead heading the same height as the navigation */
+	h3 {
+		color: #fff;
+		text-shadow: 0 0 10px white;
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: 50px;
+		padding-bottom: 19px;
+		display: inline;
+	}
+	a.navbar-brand {
+		margin-top: 0;
+		margin-bottom: 0;
+		padding-top: 0px;
+		line-height: 50px;
+		img {
+			margin: 0px;
+			padding: 0px;
+			height: 50px;
+		}
+	}
+}
+
+
+/* Main marketing message and sign up button */
+.jumbotron {
+	margin: 0px auto;
+	padding: 20px 20px;
+	border-bottom: 1px solid #e5e5e5;
+	background: $jumbotron_bg_color;
+	color: #fff;
+	.btn {
+		font-size: 21px;
+		padding: 14px 24px;
+	}
+	h1 {
+		text-shadow: 0 0 10px white;
+	}
+}
+
+
+
+.navbar-inverse {
+	background: $navbar_bg_color;
+	color: $navbar_color;
+	.navbar-nav {
+		> .open {
+			> a, > a:hover, > a:focus {
+				background: $navpill_bg_color;
+			}
+		}
+		> :not(.open) {
+			> a {
+				color: $navbar_color;
+			}
+			> a:hover {
+				text-shadow: 0 0 3px $navbar_color;
+				background: $navpill_hover_bg_color;
+			}
+		}
+		> .external > a {
+			background: $navpill_external_bg_color;
+			color: $navpill_external_color;
+		}
+	}
+}
