@@ -13,21 +13,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav nav-pills pull-xs-left pull-sm-and-up-right">
-                    <li>
-                        <a class="" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'about' %}">About</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'join' %}">Join</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'downunder' %}">Down Under</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'contact' %}">Contact</a>
-                    </li>
+                    {% include "friends/nav_list.html" %}
                 </ul>
             </div>
         </nav>

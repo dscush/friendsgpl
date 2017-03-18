@@ -3,21 +3,7 @@
             <div class="col-xs-3 col-xs-offset-1 col-sm-2 col-sm-offset-1">
                 <h5>Pages</h5>
                 <ul class="list-unstyled">
-                    <li>
-                        <a class="" href="{% url 'home' %}">Home</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'about' %}">About</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'join' %}">Join</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'downunder' %}">Bookstore</a>
-                    </li>
-                    <li>
-                        <a class="" href="{% url 'contact' %}">Contact</a>
-                    </li>
+                    {% include "friends/nav_list.html" %}
                 </ul>
             </div>
             <div class="col-xs-8 col-sm-4">
