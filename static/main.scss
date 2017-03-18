@@ -30,8 +30,10 @@ body {
   padding-right: 15px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media only screen and (min-width : 480px) {
+}
+
+@media only screen and (min-width : 768px) {
   .container {
     max-width: 730px;
   }
@@ -44,10 +46,21 @@ body {
     padding-right: 0;
   }
 
-
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  .container {
+    max-width: 930px;
+  }
+}
+
+@media only screen and (min-width : 1200px) {
+  .container {
+    max-width: 1150px;
   }
 }
 
