@@ -9,12 +9,15 @@
     <link rel="stylesheet" href="{% static 'main.scss' %}" type="text/x-scss" charset="utf-8">
     {% endcompress %}
     <title>
-      {% block title %}{% endblock %}
+      Friends of the Grafton Public Library - {% block title %}{% endblock %}
     </title>
   </head>
   <body>
 {% include "friends/header.html" %}
+{% block jumbotron %}{% endblock %}
+    <div class="container">
 {% block body %}{% endblock %}
+    </div>
 {% include "friends/footer.html" %}
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
