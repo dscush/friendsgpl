@@ -1,24 +1,24 @@
 {% extends "friends/base.html" %}
 {% load static %}
     {% block body %}
-		<div class="row row-content join">
-			<div class="col-xs-12">
-				<h1>{% block title %}Join the Friends{% endblock %}</h1>
-				<p>You can download and print the <a href="{% static 'misc_docs/friendsgpl_membership_form_2016.docx' %}">membership form</a> and submit it with a check via snail mail (all info including address is on the form), or fill out the internet form below and pay securely via Paypal.</p>
-				<p>If you're already a member, you can use the same form or paypal links to renew. If you're unsure if your membership is up to date, <a href="{% url 'contact' %}">contact us</a>.</p>
-				<div class="row">
-					<div class="col-sm-6 col-md-5 col-lg-4">
-						<div class="btn-group-vertical btn-block">
-							<label>Membership Level</label>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8BNZZ2SXUEMSG">Senior/Student - $5</a>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NJL4GYAWP68JG">Individual - $10</a>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N7MGEXBATZCW2">Family - $25</a>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZTSMKFAZUS3BU">Best Friend - $100</a>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZWWQZFRNHQNL">Business - $250</a>
-							<a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U8JTRKPYAKZXA">Other - enter amount on next page</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="row row-content join">
+            <div class="col-xs-12">
+                <h1>{% block title %}Join the Friends{% endblock %}</h1>
+                <p>You can download and print the <a href="{% static 'misc_docs/friendsgpl_membership_form_2016.docx' %}">membership form</a> and submit it with a check via snail mail (all info including address is on the form), or fill out the internet form below and pay securely via Paypal.</p>
+                <p>If you're already a member, you can use the same form or paypal links to renew. If you're unsure if your membership is up to date, <a href="{% url 'contact' %}">contact us</a>.</p>
+                <div class="row">
+                    <div class="col-sm-6 col-md-5 col-lg-4">
+                        <div class="btn-group-vertical btn-block">
+                            <label>Membership Level</label>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8BNZZ2SXUEMSG">Senior/Student - $5</a>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=NJL4GYAWP68JG">Individual - $10</a>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N7MGEXBATZCW2">Family - $25</a>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZTSMKFAZUS3BU">Best Friend - $100</a>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZZWWQZFRNHQNL">Business - $250</a>
+                            <a class="btn btn-default" role="button" target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=U8JTRKPYAKZXA">Other - enter amount on next page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endblock %}
