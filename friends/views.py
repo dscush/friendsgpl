@@ -1,18 +1,16 @@
 from django.shortcuts import render
-from django.template import RequestContext
-from django.http import HttpResponse
 
 def home(request):
-    return render(request, 'friends/home.html', context_instance=RequestContext(request))
+    return render(request, 'friends/home.html')
 
 def about(request):
-    return render(request, 'friends/about.html', context_instance=RequestContext(request))
+    return render(request, 'friends/about.html')
 
 def contact(request):
-    return render(request, 'friends/contact.html', context_instance=RequestContext(request))
+    return render(request, 'friends/contact.html')
 
 def downunder(request):
-    return render(request, 'friends/downunder.html', context_instance=RequestContext(request))
+    return render(request, 'friends/downunder.html')
 
 def join(request):
-    return render(request, 'friends/join.html', context_instance=RequestContext(request))
+    return render(request, 'friends/join.html')
