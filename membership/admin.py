@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from .models import Family, Member
+from .models import Family, Member, Committee, Role
 
 class MemberAdmin(admin.ModelAdmin):
     def is_grafton_resident(self, m):
@@ -48,8 +48,22 @@ class FamilyAdmin(admin.ModelAdmin):
     #list_filter = ['last_paid',]
     search_fields = ['family_name','family_name_2']
 
+class RoleInline(admin.TabularInline):
+    model = Role
+    extra = 2
+
+class CommitteeAdmin(admin.ModelAdmin):
+    def committee_members(self, c):
+        return '; '.join([str(m) for m in c.role_set.all()])
+    list_display = (
+        'name',
+        'committee_members',
+    )
+    inlines=[RoleInline]
+
 admin.site.register(Family, FamilyAdmin)
 admin.site.register(Member, MemberAdmin)
+admin.site.register(Committee, CommitteeAdmin)
 
 def datasheet_view(request):
     class Dataset():

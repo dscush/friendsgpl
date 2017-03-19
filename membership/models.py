@@ -100,3 +100,5 @@ class Role(models.Model):
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
+    def __str__(self):
+        return "%s, %s" % (self.member.__str__(), self.title)
