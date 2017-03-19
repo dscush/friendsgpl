@@ -1,4 +1,15 @@
 {% extends "friends/base.html" %}
     {% block body %}
-        <h1>{% block title %}About Us{% endblock %}</h1>
+        <div class="row row-content about">
+            <div class="col-xs-12">
+    			<h1>{% block title %}About{% endblock %} The Friends</h1>
+    			<h3>Who We Are and What We Do</h3>
+                <p>
+                    The Friends of the Grafton Public Library is a volunteer organization that works to support our library through advocacy and activities designed to raise money for library needs which are not funded by our local, state or federal government.
+                </p>
+                <p>
+                    We use the money we raise from the <a href="{% url 'downunder' %}">Down Under Bookstore</a>, fundraisers, and <a href="{% url 'join' %}">memberships</a> to offer a variety of programs to the Grafton community. These programs include museum passes, the summer reading program, exhibits, speakers, workshops, and concerts.
+                </p>
+            </div>
+        </div>
     {% endblock %}
