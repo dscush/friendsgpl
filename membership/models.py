@@ -83,7 +83,6 @@ class Member(models.Model):
     )
     comment = models.CharField(max_length=200, blank=True)
     volunteer = models.BooleanField(default=False)
-    board = models.BooleanField(default=False)
     staff = models.BooleanField(default=False)
     trustee = models.BooleanField(default=False)
     @property
@@ -92,3 +91,12 @@ class Member(models.Model):
     def __str__(self):
         return self.full_name
 
+class Committee(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    members = models.ManyToManyField(Member, through='Role')
+
+class Role(models.Model):
+    committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    title = models.CharField(max_length=50)

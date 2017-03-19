@@ -14,7 +14,6 @@ class MemberAdmin(admin.ModelAdmin):
         'family',
         'is_grafton_resident',
         'volunteer',
-        'board',
         'trustee',
         'staff',
     )
@@ -22,7 +21,7 @@ class MemberAdmin(admin.ModelAdmin):
 
 class MemberInline(admin.TabularInline):
     model = Member
-    extra = 0
+    extra = 2
 
 class FamilyAdmin(admin.ModelAdmin):
     '''fieldsets = [
