@@ -8,7 +8,7 @@ from datetime import date
 #setup_environ(settings)
 #import django
 #django.setup()
-from membership.models import Member, Family
+from membership.models import Member, DuesPayment
 
 class Command(BaseCommand):
     help = "Save all membership data to a csv file"
@@ -22,7 +22,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        fams = Family.objects.all()
+        fams = DuesPayment.objects.all() # TODO: double check that this works
         famlist = [[
             'Family Name',
             'Other Family Name',
@@ -60,10 +60,10 @@ class Command(BaseCommand):
                 phone = '%s-%s-%s' % (phone[:3],phone[3:6],phone[6:])
             else:
                 phone = ''
-            if f.last_paid == date(1,1,1):
-                last_paid = ''
+            if f.date_paid == date(1,1,1):
+                date_paid = ''
             else:
-                last_paid = f.last_paid
+                date_paid = f.date_paid
             comments = [f.comment] + [m.comment for m in mems if m.comment]
             comment = ' | '.join(filter(lambda c:c, comments))
             #if comment == ' | ':
@@ -79,8 +79,8 @@ class Command(BaseCommand):
                 city,
                 state,
                 f.zip_code,
-                last_paid,
-                f.dues_amount,
+                date_paid,
+                f.amount,
                 primary_member.volunteer and 'x' or '',
                 other_members,
                 comment,

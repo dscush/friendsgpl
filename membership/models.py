@@ -16,23 +16,23 @@ zip_validators = [
 
 class MemberManager(models.Manager):
     def active_members(self):
-        member_ids = [member.id for member in self.all() if member.family.is_active()]
+        member_ids = [member.id for member in self.all() if member.dues_payment.is_active()]
         return self.filter(pk__in=member_ids)
-    def dues_counts(self):
-        dues = [member.family.dues_amount for member in self.all() if member.family.is_active()]
+    def level_counts(self):
+        dues = [member.dues_payment.amount for member in self.all() if member.dues_payment.is_active()]
         return {i:len([d for d in dues if d == i]) for i in set(dues)}
 
-class FamilyManager(models.Manager):
-    def total_dues_fiscal_year(self):
-        return sum(family.dues_amount for family in self.all() if family.paid_this_fiscal_year())
-    def total_dues_prev_12mo(self):
-        return sum(family.dues_amount for family in self.all() if family.is_active())
-    def dues_counts(self):
-        dues = [family.dues_amount for family in self.all() if family.is_active()]
+class DuesPaymentManager(models.Manager):
+    def total_fiscal_year(self):
+        return sum(dues_payment.amount for dues_payment in self.all() if dues_payment.paid_this_fiscal_year())
+    def total_prev_12mo(self):
+        return sum(dues_payment.amount for dues_payment in self.all() if dues_payment.is_active())
+    def level_counts(self):
+        dues = [dues_payment.amount for dues_payment in self.all() if dues_payment.is_active()]
         return {i:len([d for d in dues if d == i]) for i in set(dues)}
 
-class Family(models.Model):
-    objects = FamilyManager()
+class DuesPayment(models.Model):
+    objects = DuesPaymentManager()
     family_name = models.CharField(max_length=200)
     family_name_2 = models.CharField(max_length=200, blank=True, verbose_name='Alternative family name')
     street_address_1 = models.CharField(max_length=200, blank=True)
@@ -43,21 +43,21 @@ class Family(models.Model):
         blank=True,
         null=True,
     )
-    last_paid = models.DateField(verbose_name="date dues paid")
-    dues_amount = models.PositiveSmallIntegerField()
+    date_paid = models.DateField()
+    amount = models.PositiveSmallIntegerField()
     comment = models.CharField(max_length=200, blank=True)
     def paid_this_fiscal_year(self):
         start_fiscal_year = timezone.now().date().replace(month=7)
         if start_fiscal_year > timezone.now().date():
             start_fiscal_year = start_fiscal_year.replace(year=timezone.now().year-1)
-        return self.last_paid >= start_fiscal_year
-    paid_this_fiscal_year.admin_order_field = last_paid
+        return self.date_paid >= start_fiscal_year
+    paid_this_fiscal_year.admin_order_field = date_paid
     paid_this_fiscal_year.boolean = True
     paid_this_fiscal_year.short_description = 'Dues paid this fiscal year?'
     def is_active(self):
         year_ago = timezone.now().date().replace(year=timezone.now().year-1)
-        return self.last_paid >= year_ago
-    is_active.admin_order_field = last_paid
+        return self.date_paid >= year_ago
+    is_active.admin_order_field = date_paid
     is_active.boolean = True
     is_active.short_description = 'Dues paid?'
     def is_grafton_resident(self):
@@ -74,7 +74,7 @@ class Member(models.Model):
     objects = MemberManager()
     last_name = models.CharField(max_length=200)
     first_name = models.CharField(max_length=200)
-    family = models.ForeignKey(Family)
+    dues_payment = models.ForeignKey(DuesPayment)
     email = models.EmailField(blank=True, null=True, validators=[validate_email])
     personal_phone = models.IntegerField(
         validators=phone_validators,

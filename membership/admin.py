@@ -3,27 +3,27 @@ from django.contrib import admin
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from .models import Family, Member, Committee, Role
+from .models import DuesPayment, Member, Committee, Role
 
 class MemberAdmin(admin.ModelAdmin):
     def is_grafton_resident(self, m):
-        return m.family.is_grafton_resident()
+        return m.dues_payment.is_grafton_resident()
     is_grafton_resident.boolean = True
     list_display = (
         'full_name',
-        'family',
+        'dues_payment',
         'is_grafton_resident',
         'volunteer',
         'trustee',
         'staff',
     )
-    search_fields = ['first_name','last_name', 'family__family_name']
+    search_fields = ['first_name','last_name', 'dues_payment__family_name']
 
 class MemberInline(admin.TabularInline):
     model = Member
     extra = 2
 
-class FamilyAdmin(admin.ModelAdmin):
+class DuesPaymentAdmin(admin.ModelAdmin):
     '''fieldsets = [
         (None, {'fields': ['family_name']}),
         ('Contact information', {'fields': [
@@ -32,20 +32,20 @@ class FamilyAdmin(admin.ModelAdmin):
             'zip_code',
             'home_phone',
         ]}),
-        ('Dues', {'fields': ['dues_amount', 'last_paid']}),
+        ('Dues', {'fields': ['amount', 'date_paid']}),
     ]'''
     def members(self, f):
         return ', '.join([str(m) for m in f.member_set.all()])
     list_display = (
         '__str__',
         'members',
-        'last_paid',
+        'date_paid',
         'is_active',
         'paid_this_fiscal_year',
         'is_grafton_resident',
     )
     inlines = [MemberInline]
-    #list_filter = ['last_paid',]
+    #list_filter = ['date_paid',]
     search_fields = ['family_name','family_name_2']
 
 class RoleInline(admin.TabularInline):
@@ -61,7 +61,7 @@ class CommitteeAdmin(admin.ModelAdmin):
     )
     inlines=[RoleInline]
 
-admin.site.register(Family, FamilyAdmin)
+admin.site.register(DuesPayment, DuesPaymentAdmin)
 admin.site.register(Member, MemberAdmin)
 admin.site.register(Committee, CommitteeAdmin)
 
@@ -78,11 +78,11 @@ def datasheet_view(request):
                 for i, data_row in enumerate(data):
                     data_row.insert(0,row_headers[i])
 
-    mem_dues = Member.objects.dues_counts()
-    fam_dues = Family.objects.dues_counts()
+    mem_dues = Member.objects.level_counts()
+    fam_dues = DuesPayment.objects.level_counts()
     mem_dues_data = [mem_dues[k] for k in sorted(mem_dues)]
     fam_dues_data = [fam_dues[k] for k in sorted(fam_dues)]
-    dues_counts_col_headers = ['$' + str(x) for x in sorted(mem_dues)]
+    level_counts_col_headers = ['$' + str(x) for x in sorted(mem_dues)]
 
     return render_to_response(
         'membership/admin/datasheet.html',
@@ -93,8 +93,8 @@ def datasheet_view(request):
                     name='General Membership Info',
                     data=[
                         [Member.objects.active_members().count()],
-                        ['$' + str(Family.objects.total_dues_fiscal_year())],
-                        ['$' + str(Family.objects.total_dues_prev_12mo())],
+                        ['$' + str(DuesPayment.objects.total_fiscal_year())],
+                        ['$' + str(DuesPayment.objects.total_prev_12mo())],
                     ],
                     row_headers=(
                         'Number of active members',
@@ -112,7 +112,7 @@ def datasheet_view(request):
                         'Member dues counts',
                         'Family dues counts',
                     ),
-                    col_headers=dues_counts_col_headers
+                    col_headers=level_counts_col_headers
                 ),
             ]
         },
@@ -128,16 +128,16 @@ def datasheet_view(request):
 					'name': 'General Membership Info',
 					'data':	OrderedDict([
 						('Number of active members', (Member.objects.active_members().count(),)),
-						('Total dues fiscal year', ('$' + str(Family.objects.total_dues_fiscal_year()),)),
-						('Total dues prev 12mo', ('$' + str(Family.objects.total_dues_prev_12mo()),)),
+						('Total dues fiscal year', ('$' + str(DuesPayment.objects.total_fiscal_year()),)),
+						('Total dues prev 12mo', ('$' + str(DuesPayment.objects.total_prev_12mo()),)),
 					]),
 				},
 				{
 					'name': 'Dues Counts',
 					'data':	OrderedDict([
 						# TODO: organize after creating dataset class
-						('Member dues counts', (Member.objects.dues_counts(),'foo')),
-						('Family dues counts', (Family.objects.dues_counts(),'bar')),
+						('Member dues counts', (Member.objects.level_counts(),'foo')),
+						('Family dues counts', (DuesPayment.objects.level_counts(),'bar')),
 					]),
 				},
 			],
