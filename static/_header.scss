@@ -57,6 +57,8 @@ header {
 	background: $navbar_bg_color;
 	color: $navbar_color;
 	.navbar-nav {
+        margin-left: 10px;
+        margin-right: 10px;
 		> .open {
 			> a, > a:hover, > a:focus {
 				background: $navpill_bg_color;
