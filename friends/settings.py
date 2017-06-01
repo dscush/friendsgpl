@@ -25,7 +25,7 @@ SECRET_KEY = 'n&62g(gykgcdtrad6$@xum4ed+y7r(x@+b0dl9m1rn=i&&h2cp'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['friendsgpl-dscush.c9users.io','dscush.pythonanywhere.com']
+ALLOWED_HOSTS = ['friendsgpl-dscush.c9users.io','dscush.pythonanywhere.com','www.friendsgpl.org']
 
 
 # Application definition
