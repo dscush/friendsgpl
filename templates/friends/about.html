@@ -3,7 +3,6 @@
         <div class="row row-content about">
             <div class="col-xs-12">
                 <h1>{% block title %}About{% endblock %} The Friends</h1>
-                <h3>Who We Are and What We Do</h3>
                 <p>
                     The Friends of the Grafton Public Library is a volunteer organization that works to support our library through advocacy and activities designed to raise money for library needs which are not funded by our local, state or federal government.
                 </p>
@@ -11,5 +10,35 @@
                     We use the money we raise from the <a href="{% url 'downunder' %}">Down Under Bookstore</a>, fundraisers, and <a href="{% url 'join' %}">memberships</a> to offer a variety of programs to the Grafton community. These programs include museum passes, the summer reading program, exhibits, speakers, workshops, and concerts.
                 </p>
             </div>
+        </div>
+        <div class="row row-content about">
+            <div class="col-xs-12">
+                <h2>Committees</h2>
+                <p>There are several ways to get involved with the Friends.  In addition to volunteering at individual events, you can serve on our of our committees.  If you're interested joining a committee, just <a href="{% url 'contact' %}">let us know</a>.
+            </div>
+            {% for committee in committees %}
+            <div class="col-xs-12 col-md-10 col-lg-8">
+                <h3>{{ committee.name }}</h3>
+                <p>{{ committee.description }}</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <colgroup>
+                            <col class="col-xs-4">
+                            <col class="col-xs-4">
+                        </colgroup>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                        </tr>
+                        {% for role in committee.role_set.all %}
+                        <tr>
+                            <td>{{ role.member.full_name }}</td>
+                            <td>{{ role.title }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     {% endblock %}

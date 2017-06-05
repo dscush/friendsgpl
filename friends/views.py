@@ -1,10 +1,14 @@
 from django.shortcuts import render
 
+from membership.models import Committee
+
 def home(request):
     return render(request, 'friends/home.html')
 
 def about(request):
-    return render(request, 'friends/about.html')
+    committees = Committee.objects.all()
+    context = {'committees': committees}
+    return render(request, 'friends/about.html', context)
 
 def contact(request):
     return render(request, 'friends/contact.html')
