@@ -93,7 +93,7 @@ class Member(models.Model):
 
 class Committee(models.Model):
     name = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=500)
     members = models.ManyToManyField(Member, through='Role')
 
 class Role(models.Model):
