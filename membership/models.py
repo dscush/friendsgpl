@@ -98,7 +98,7 @@ class Committee(models.Model):
 
 class Role(models.Model):
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
-    member = models.ForeignKey(Member, on_delete=models.CASCADE)
+    member = models.ForeignKey(Member, on_delete=models.CASCADE, blank=True, null=True)
     title = models.CharField(max_length=50)
     def __str__(self):
         return "%s, %s" % (self.member.__str__(), self.title)
