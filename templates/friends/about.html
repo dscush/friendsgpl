@@ -32,7 +32,7 @@
                         </tr>
                         {% for role in committee.role_set.all %}
                         <tr>
-                            <td>{{ role.member.full_name }}</td>
+                            <td>{% firstof role.member.full_name "VACANT" %}</td>
                             <td>{{ role.title }}</td>
                         </tr>
                         {% endfor %}
