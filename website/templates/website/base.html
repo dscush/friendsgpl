@@ -6,19 +6,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" rel="stylesheet">
     {% load compress %}
     {% compress css %}
-    <link rel="stylesheet" href="{% static 'main.scss' %}" type="text/x-scss" charset="utf-8">
+    <link rel="stylesheet" href="{% static 'website/main.scss' %}" type="text/x-scss" charset="utf-8">
     {% endcompress %}
     <title>
       Friends of the Grafton Public Library - {% block title %}{% endblock %}
     </title>
   </head>
   <body>
-{% include "friends/header.html" %}
+{% include "website/header.html" %}
 {% block jumbotron %}{% endblock %}
     <div class="container content">
 {% block body %}{% endblock %}
     </div>
-{% include "friends/footer.html" %}
+{% include "website/footer.html" %}
   </body>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </html>

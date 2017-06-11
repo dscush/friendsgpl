@@ -1,11 +1,11 @@
-{% extends "friends/base.html" %}
+{% extends "website/base.html" %}
 {% load static %}
     {% block jumbotron %}
         <div class="jumbotron">
             <div class="container">
                 <div class="row row-header">
                     <div class="col-xs-12 col-sm-3 col-sm-push-9">
-                        <img class="img-responsive" src="{% static 'images/logo_no_words.png' %}" alt="Logo for the Friends of the Grafton Public Library">
+                        <img class="img-responsive" src="{% static 'website/images/logo_no_words.png' %}" alt="Logo for the Friends of the Grafton Public Library">
                     </div>
                     <div class="col-xs-12 col-sm-9 col-sm-pull-3">
                         <h1>{% block title %}Welcome{% endblock %}, Friend!</h1>
@@ -30,9 +30,9 @@
                     <p>Bags are going for $20, but members of the Friends get them for $18.  All proceeds benefit the Grafton Public Library.  Stop by the library and get yours today!</p>
                     <section class="row">
                         <section class="col-xs-6 col-sm-12 col-lg-6">
-                            <a href="{% static 'images/all_bags.jpg' %}">
+                            <a href="{% static 'website/images/all_bags.jpg' %}">
                             <div class="thumbnail">
-                                <img src="{% static 'images/all_bags.jpg' %}" class="img-responsive" alt="Three tote bags">
+                                <img src="{% static 'website/images/all_bags.jpg' %}" class="img-responsive" alt="Three tote bags">
                                 <div class="caption">
                                     <p>Tote bags in all three color options.  Click for full size.</p>
                                 </div>
@@ -40,9 +40,9 @@
                             </a>
                         </section>
                         <section class="col-xs-6 col-sm-12 col-lg-6">
-                            <a href="{% static 'images/khaki_bag.jpg' %}">
+                            <a href="{% static 'website/images/khaki_bag.jpg' %}">
                             <div class="thumbnail">
-                                <img src="{% static 'images/khaki_bag.jpg' %}" class="img-responsive" alt="Tan tote bag">
+                                <img src="{% static 'website/images/khaki_bag.jpg' %}" class="img-responsive" alt="Tan tote bag">
                                 <div class="caption">
                                     <p>Example of the khaki bag filled with stuff.  Click for full size.</p>
                                 </div>
