@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'website',
     'adminplus',
     'compressor',
+    'bootstrapform',
 )
 
 MIDDLEWARE_CLASSES = (

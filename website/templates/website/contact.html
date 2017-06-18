@@ -1,20 +1,20 @@
 {% extends "website/base.html" %}
+{% load bootstrap %}
     {% block body %}
         <div class="row row-content about">
             <div class="col-xs-12">
                 <h1>{% block title %}Contact Us{% endblock %}</h1>
-                <p>
-                    Fill out this form and we'll get back to you soon:
-                </p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
                 <form role="form" action="" method="post">
                     {% csrf_token %}
-                    {{ contact_form.as_p }}
-                    <button type="submit">Submit</button>
+                    {{ contact_form|bootstrap }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-6">
                 <p>
-                    Alternatively, you can email us directly at: <a href="mailto:info@friendsgpl.org">info@friendsgpl.org</a>.  You can also message us or post on our <a href="https://www.facebook.com/GPLFriends">Facebook page</a>.  If you're old school, you can send mail to:
+                    We'd love to hear from you!  Fill out the form and we'll get back to you.  Alternatively, you can email us directly at <a href="mailto:info@friendsgpl.org">info@friendsgpl.org</a>.  You can also message us or post on our <a href="https://www.facebook.com/GPLFriends">Facebook page</a>.  If you're old school, you can send mail to:
                 </p>
                 <p>
                     Friends of the Grafton Public Library<br>

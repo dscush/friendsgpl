@@ -3,6 +3,7 @@ appdirs==1.4.3
 Django==1.11
 django-adminplus==0.5
 django-appconf==1.0.2
+django-bootstrap-form==3.2.1
 django-compressor==2.1.1
 packaging==16.8
 pyparsing==2.2.0
