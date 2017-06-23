@@ -1,0 +1,11 @@
+$brand_primary: #00A787;
+$link_color: #00A0FC;
+$jumbotron_bg_color: $brand_primary;                                                                                                                                                                                     
+$navbar_bg_color: darken($jumbotron_bg_color, 7%);
+$navpill_bg_color: $jumbotron_bg_color;
+$jumbotron_color: #fff;
+$navbar_color: #fff;
+$navpill_external_color: $navbar_color;
+$navpill_external_bg_color: darken($jumbotron_bg_color, 7%);
+$navpill_hover_bg_color: darken($jumbotron_bg_color, 20%);
+
