@@ -95,6 +95,8 @@ class Committee(models.Model):
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=500)
     members = models.ManyToManyField(Member, through='Role')
+    def __str__(self):
+        return self.name
 
 class Role(models.Model):
     committee = models.ForeignKey(Committee, on_delete=models.CASCADE)
