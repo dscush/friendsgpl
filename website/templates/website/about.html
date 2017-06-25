@@ -32,7 +32,11 @@
                         </tr>
                         {% for role in committee.role_set.all %}
                         <tr>
-                            <td>{% firstof role.member.full_name "VACANT" %}</td>
+                            {% if role.member.full_name %}
+                            <td>{{ role.member.full_name }}</td>
+                            {% else %}
+                            <td>Vacant (<a href="{% url 'contact' %}">apply</a>)</td>
+                            {% endif %}
                             <td>{{ role.title }}</td>
                         </tr>
                         {% endfor %}
