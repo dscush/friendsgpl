@@ -102,3 +102,23 @@ class Role(models.Model):
     title = models.CharField(max_length=50)
     def __str__(self):
         return "%s, %s" % (self.member.__str__(), self.title)
+    def __key__(self):
+        role_order = {
+            'president': 0,
+            'secretary': 1,
+            'treasurer': 2,
+            'director': 1000,
+            'chair': 2000,
+            'member': 3000,
+        }
+        key = role_order.get(self.title.lower())
+        if key is None:
+            for ro in role_order:
+                if ro in self.title.lower():
+                    key = role_order.get(ro) + 0.0001
+        if key is None:
+            key = 1000000
+        return key
+    def __lt__(self, other):
+        return self.__key__() < other.__key__()
+

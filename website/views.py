@@ -11,6 +11,8 @@ def home(request):
 
 def about(request):
     committees = Committee.objects.all()
+    for committee in committees:
+        committee.sorted_role_set = sorted(committee.role_set.all())
     context = {'committees': committees}
     return render(request, 'website/about.html', context)
 

@@ -30,7 +30,7 @@
                             <th>Name</th>
                             <th>Position</th>
                         </tr>
-                        {% for role in committee.role_set.all %}
+                        {% for role in committee.sorted_role_set %}
                         <tr>
                             {% if role.member.full_name %}
                             <td>{{ role.member.full_name }}</td>
