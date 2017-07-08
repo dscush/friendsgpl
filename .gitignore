@@ -1,6 +1,6 @@
 *.sqlite3
 __pycache__
 /static
-/friends/secret_settings.py
+config.ini
 /friends/static/bower_components
 

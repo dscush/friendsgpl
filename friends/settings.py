@@ -10,7 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 import os
+import configparser
+import json
 from django.contrib.messages import constants as messages
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+config = configparser.ConfigParser()
+config.read(os.path.join(BASE_DIR, 'config.ini'))
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',
@@ -20,21 +28,16 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'n&62g(gykgcdtrad6$@xum4ed+y7r(x@+b0dl9m1rn=i&&h2cp'
+SECRET_KEY = config['DEFAULT']['SecretKey']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config['DEFAULT'].getboolean('Debug')
 
-ALLOWED_HOSTS = ['friendsgpl-dscush.c9users.io','dscush.pythonanywhere.com','www.friendsgpl.org']
+ALLOWED_HOSTS = json.loads(config['DEFAULT']['AllowedHosts'])
 
 
 # Application definition
@@ -90,8 +93,12 @@ WSGI_APPLICATION = 'friends.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': config['DB'].get('Engine'),
+        'NAME': config['DB'].get('Name'),
+        'USER': config['DB'].get('User'),
+        'PASSWORD': config['DB'].get('Password'),
+        'HOST': config['DB'].get('Host'),
+        'PORT': config['DB'].get('Port'),
     }
 }
 
@@ -101,7 +108,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'US/Eastern'
+TIME_ZONE = config['DEFAULT']['TimeZone']
 
 USE_I18N = True
 
@@ -124,15 +131,14 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'sass --scss {infile} {outfile}'),
+    ('text/x-scss', 'django_libsass.SassCompiler'),
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'noreply@friendsgpl.org'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-EMAIL_PORT = 1025
-
-from friends.secret_settings import *
+EMAIL_BACKEND = config['Email'].get('EmailBackend')
+DEFAULT_FROM_EMAIL = config['Email'].get('DefaultFromEmail')
+EMAIL_HOST_USER = config['Email'].get('EmailHostUser')
+EMAIL_HOST_PASSWORD = config['Email'].get('EmailHostPassword')
+EMAIL_USE_TLS = config['Email'].getboolean('EmailUseTls')
+EMAIL_HOST = config['Email'].get('EmailHost')
+EMAIL_PORT = config['Email'].getint('EmailPort')
 
