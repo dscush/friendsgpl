@@ -5,7 +5,6 @@ header {
 	/* Make the masthead heading the same height as the navigation */
 	h3 {
 		color: #fff;
-		text-shadow: 0 0 10px white;
 		margin-top: 0;
 		margin-bottom: 0;
 		line-height: 50px;
@@ -38,7 +37,6 @@ header {
 		padding: 14px 24px;
 	}
 	h1 {
-		text-shadow: 0 0 10px white;
 	}
 }
 
@@ -60,7 +58,6 @@ header {
 				color: $navbar_color;
 			}
 			> a:hover {
-				text-shadow: 0 0 3px $navbar_color;
 				background: $navpill_hover_bg_color;
 			}
 		}
