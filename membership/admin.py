@@ -5,23 +5,23 @@ from django.template import RequestContext
 
 from .models import DuesPayment, Member, Committee, Role
 
+class MemberInline(admin.TabularInline):
+    model = Member.dues_payments.through
+    extra = 2
+
 class MemberAdmin(admin.ModelAdmin):
     def is_grafton_resident(self, m):
         return m.dues_payment.is_grafton_resident()
     is_grafton_resident.boolean = True
     list_display = (
         'full_name',
-        'dues_payment',
         'is_grafton_resident',
         'volunteer',
         'trustee',
         'staff',
     )
+    inlines = [MemberInline]
     search_fields = ['first_name','last_name', 'dues_payment__family_name']
-
-class MemberInline(admin.TabularInline):
-    model = Member
-    extra = 2
 
 class DuesPaymentAdmin(admin.ModelAdmin):
     '''fieldsets = [

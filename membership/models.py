@@ -74,7 +74,7 @@ class Member(models.Model):
     objects = MemberManager()
     last_name = models.CharField(max_length=200)
     first_name = models.CharField(max_length=200)
-    dues_payment = models.ForeignKey(DuesPayment)
+    dues_payments = models.ManyToManyField(DuesPayment)
     email = models.EmailField(blank=True, null=True, validators=[validate_email])
     personal_phone = models.IntegerField(
         validators=phone_validators,
