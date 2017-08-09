@@ -2,26 +2,48 @@
 header {
 	border-bottom: 1px solid #e5e5e5;
 
-	/* Make the masthead heading the same height as the navigation */
-	h3 {
-		color: #fff;
-		margin-top: 0;
-		margin-bottom: 0;
-		line-height: 50px;
-		padding-bottom: 19px;
-		display: inline;
-	}
-	a.navbar-brand {
-		margin-top: 0;
-		margin-bottom: 0;
-		padding-top: 0px;
-		line-height: 50px;
-		img {
-			margin: 0px;
-			padding: 0px;
-			height: 50px;
-		}
-	}
+    .navbar-inverse {
+        background: $navbar_bg_color;
+        color: $navbar_color;
+        a.navbar-brand {
+            color: $navbar_color;
+            margin-top: 0;
+            margin-bottom: 0;
+            padding: 0;
+            line-height: 50px;
+            img {
+                margin: 0px;
+                padding: 0px;
+                height: 50px;
+            }
+            &.title {
+                border-radius: 4px;
+                padding: 0 15px;
+                &:hover {
+                    background: $navpill_hover_bg_color;
+                }
+            }
+        }
+        .navbar-nav {
+            > .open {
+                > a, > a:hover, > a:focus {
+                    background: $navpill_bg_color;
+                }
+            }
+            > :not(.open) {
+                > a {
+                    color: $navbar_color;
+                }
+                > a:hover {
+                    background: $navpill_hover_bg_color;
+                }
+            }
+            > .external > a {
+                background: $navpill_external_bg_color;
+                color: $navpill_external_color;
+            }
+        }
+    }
 }
 
 
@@ -42,28 +64,3 @@ header {
 
 
 
-.navbar-inverse {
-	background: $navbar_bg_color;
-	color: $navbar_color;
-	.navbar-nav {
-        margin-left: 10px;
-        margin-right: 10px;
-		> .open {
-			> a, > a:hover, > a:focus {
-				background: $navpill_bg_color;
-			}
-		}
-		> :not(.open) {
-			> a {
-				color: $navbar_color;
-			}
-			> a:hover {
-				background: $navpill_hover_bg_color;
-			}
-		}
-		> .external > a {
-			background: $navpill_external_bg_color;
-			color: $navpill_external_color;
-		}
-	}
-}
