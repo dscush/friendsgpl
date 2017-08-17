@@ -9,7 +9,8 @@
                         <p>You can download and print the <a href="{% static 'website/misc_docs/friendsgpl_membership_form_2016.docx' %}">membership form</a> and submit it with a check via snail mail (all info including address is on the form), or fill out this internet form and pay securely via Paypal.</p>
                         <p>If you're already a member, you can use the same form or paypal links to renew. If you're unsure if your membership is up to date, <a href="{% url 'contact' %}">contact us</a>.</p>
                     </div>
-                    <div class="col-sm-6 col-md-5 col-lg-4">
+                    <div id="join_form">
+                        <h2 class="h4">Join or Renew Via <span id="paypal"><span id="pay">Pay</span><span id="pal">Pal</span></span></h2>
                         <form role="form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <div class="form-group">
                             <label for="dues_level">Dues Level</label>
@@ -37,7 +38,7 @@
                                 <input type="radio" name="t3" id="recurrence_interval_annual" value="Y" checked="checked">Annual
                             </label>
                         </div>
-                        <input type="image" id="join_button" src="{% static 'website/images/paypal.png' %}" border="0" name="submit" alt="Secure payments processed by PayPal" onClick="javascript: pageTracker._trackPageview(‘/outgoing/paypal.com?monthly’);">
+                        <input type="submit" class="btn btn-primary" id="join_button" border="0" name="submit" alt="Secure payments processed by PayPal">
 
                         <input type="hidden" id="cmd" name="cmd" value="_xclick-subscriptions">
                         <input type="hidden" name="business" value="dan@friendsgpl.org">
