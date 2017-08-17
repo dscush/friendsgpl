@@ -103,10 +103,9 @@ h3 {
 }
 
 #join_form {
-  //class="col-sm-6 col-md-5 col-lg-4"
-  @include make-lg-column(12);
-  @include make-lg-column(6);
-  @include make-lg-column(5);
+  @include make-xs-column(12);
+  @include make-sm-column(6);
+  @include make-md-column(5);
   @include make-lg-column(4);
   border: 2px solid $navbar_bg_color;
   border-radius: 5px;
@@ -117,9 +116,10 @@ h3 {
   font-weight: bold;
   background-color: #FFC439;
   border-radius: 500px;
-  padding: 1px 8px;
+  padding: 0 8px 2px;
   text-shadow: 0px 1px 0 #fff;
   font-size: larger;
+  font-family: "verdana";
 }
 
 #pay {
