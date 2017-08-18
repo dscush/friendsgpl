@@ -111,21 +111,14 @@ h3 {
   border-radius: 5px;
 }
 
-#paypal {
+.paypal {
   font-style: italic;
   font-weight: bold;
-  background-color: #FFC439;
-  border-radius: 500px;
-  padding: 0 8px 2px;
-  text-shadow: 0px 1px 0 #fff;
-  font-size: larger;
   font-family: "verdana";
-}
-
-#pay {
-  color: #01194E;
-}
-
-#pal {
-  color: #1074B2;
+  :first-child {
+    color: #003087;
+  }
+  :last-child {
+    color: #009CDE;
+  }
 }
