@@ -3,9 +3,22 @@
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
-
-    address .fa {
-        width: 25px;
-        text-align: center;
-    }
+  .nav {
+    @include make-xs-column(5);
+    @include make-xs-column-offset(1);
+    @include make-sm-column(2);
+    @include make-lg-column-offset(2);
+  }
+  .address{
+    @include make-xs-column(5);
+    @include make-sm-column(4);
+    @include make-lg-column(3);
+  }
+  .social-media {
+    @include make-xs-column(10);
+    @include make-xs-column-offset(1);
+    @include make-sm-column(4);
+    @include make-sm-column-offset(0);
+    @include make-lg-column(3);
+  }
 }
