@@ -5,7 +5,7 @@
             <div class="col-xs-12">
                 <h1>{% block title %}Join the Friends{% endblock %}</h1>
                 <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+                    <div id="join_info">
                         <p>You can download and print the <a href="{% static 'website/misc_docs/friendsgpl_membership_form_2016.docx' %}">membership form</a> and submit it with a check via snail mail (all info including address is on the form), or fill out this internet form and pay securely via <span class="paypal"><span>Pay</span><span>Pal</span></span>.</p>
                         <p>If you're already a member, you can use these same methods to renew. If you're unsure if your membership is up to date, <a href="{% url 'contact' %}">contact us</a>.</p>
                     </div>
@@ -14,21 +14,29 @@
                         <form role="form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
                         <div class="form-group">
                             <label for="dues_level">Dues Level</label>
-                            <select class="form-control" id="dues_level" name="a3">
-                                <option value="5">Student/Senior - $5</option>
-                                <option value="10">Individual - $10</option>
-                                <option value="25" selected="selected">Family - $25</option>
-                                <option value="100">Best Friend - $100</option>
-                                <option value="250">Business - $250</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <div class="input">
+                                <select class="form-control" id="dues_level" name="a3">
+                                    <option value="5">Student/Senior - $5</option>
+                                    <option value="10">Individual - $10</option>
+                                    <option value="25" selected="selected">Family - $25</option>
+                                    <option value="100">Best Friend - $100</option>
+                                    <option value="250">Business - $250</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group" id="other_amount_fg">
                             <label for="other_amount">Amount</label>
-                            <input class="form-control" id="other_amount" name="">
+                            <div class="input">
+                                <input class="form-control" id="other_amount" name="">
+                            </div>
                         </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" id="is_recurring">Make recurring payment?</label>
+                        <div class="form-group">
+                            <div class="checkbox-fg">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="is_recurring">Make recurring payment?</label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group" id="recurrence_interval" hidden="hidden">
                             <label class="radio-inline">

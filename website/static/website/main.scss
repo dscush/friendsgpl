@@ -102,6 +102,13 @@ h3 {
   width: 150px;
 }
 
+#join_info {
+  @include make-xs-column(12);
+  @include make-sm-column(6);
+  @include make-md-column(7);
+  @include make-lg-column(8);
+}
+
 #join_form {
   @include make-xs-column(12);
   @include make-sm-column(6);
@@ -109,6 +116,13 @@ h3 {
   @include make-lg-column(4);
   border: 2px solid $navbar_bg_color;
   border-radius: 5px;
+  form {
+    > .form-group {
+      > label {
+        @extend .control-label;
+      }
+    }
+  }
 }
 
 .paypal {
