@@ -117,6 +117,12 @@ h3 {
   border: 2px solid $navbar_bg_color;
   border-radius: 5px;
   form {
+    #total-fg {
+      font-size: x-large;
+    }
+    #total {
+      @extend .form-control-static;
+    }
     > .form-group {
       > label {
         @extend .control-label;

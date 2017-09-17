@@ -15,7 +15,7 @@
                         <div class="form-group">
                             <label for="dues_level">Dues Level</label>
                             <div class="input">
-                                <select class="form-control" id="dues_level" name="a3">
+                                <select class="form-control" id="dues_level">
                                     <option value="5">Student/Senior - $5</option>
                                     <option value="10">Individual - $10</option>
                                     <option value="25" selected="selected">Family - $25</option>
@@ -28,7 +28,14 @@
                         <div class="form-group" id="other_amount_fg">
                             <label for="other_amount">Amount</label>
                             <div class="input">
-                                <input class="form-control" id="other_amount" name="">
+                                <input type="number" class="form-control" id="other_amount">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox-fg">
+                                <div class="checkbox">
+                                    <label><input type="checkbox" id="add_paypal_fee">Add on <span id="paypal-fee"></span> PayPal fee?</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -46,8 +53,15 @@
                                 <input type="radio" name="t3" id="recurrence_interval_annual" value="Y" checked="checked">Annual
                             </label>
                         </div>
+                        <div class="form-group" id="total-fg">
+                            <label>Total</label>
+                            <div class="input">
+                                <p id="total">$123</p>
+                            </div>
+                        </div>
                         <input type="submit" class="btn btn-primary" id="join_button" border="0" name="submit" alt="Secure payments processed by PayPal">
 
+                        <input type="hidden" id="hidden-total">
                         <input type="hidden" id="cmd" name="cmd" value="_xclick-subscriptions">
                         <input type="hidden" name="business" value="dan@friendsgpl.org">
                         <input type="hidden" name="currency_code" value="USD">
