@@ -120,8 +120,14 @@ h3 {
     #total-fg {
       font-size: x-large;
     }
-    #total {
-      @extend .form-control-static;
+    #total-fg {
+      font-size: x-large;
+      label::after {
+          content: ": ";
+      }
+      div, p, label{
+        display: inline;
+      }
     }
     > .form-group {
       > label {
