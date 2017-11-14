@@ -46,4 +46,4 @@ def downunder(request):
     return render(request, 'website/downunder.html')
 
 def join(request):
-    return render(request, 'website/join.html', {'paypal_email': settings.PAYPAL_EMAIL})
+    return render(request, 'website/join.html', {'paypal_email': settings.PAYPAL_EMAIL, 'paypal_form_url': settings.PAYPAL_FORM_URL})

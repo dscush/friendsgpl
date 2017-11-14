@@ -144,3 +144,4 @@ EMAIL_PORT = config['Email'].getint('EmailPort')
 
 
 PAYPAL_EMAIL = config['PayPal'].get('Email')
+PAYPAL_FORM_URL = config['PayPal'].get('FormURL')
