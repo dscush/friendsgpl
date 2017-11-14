@@ -142,3 +142,5 @@ EMAIL_USE_TLS = config['Email'].getboolean('EmailUseTls')
 EMAIL_HOST = config['Email'].get('EmailHost')
 EMAIL_PORT = config['Email'].getint('EmailPort')
 
+
+PAYPAL_EMAIL = config['PayPal'].get('Email')

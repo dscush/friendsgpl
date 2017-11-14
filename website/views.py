@@ -3,6 +3,7 @@ from django.core.mail import EmailMessage
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib import messages
+from django.conf import settings
 from website.forms import ContactForm
 from membership.models import Committee
 
@@ -45,4 +46,4 @@ def downunder(request):
     return render(request, 'website/downunder.html')
 
 def join(request):
-    return render(request, 'website/join.html')
+    return render(request, 'website/join.html', {'paypal_email': settings.PAYPAL_EMAIL})
