@@ -28,6 +28,8 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
