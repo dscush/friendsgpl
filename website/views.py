@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
+from django.core.urlresolvers import reverse
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib import messages
@@ -46,4 +47,17 @@ def downunder(request):
     return render(request, 'website/downunder.html')
 
 def join(request):
-    return render(request, 'website/join.html', {'paypal_email': settings.PAYPAL_EMAIL, 'paypal_form_url': settings.PAYPAL_FORM_URL})
+    context = {
+        'paypal_email': settings.PAYPAL_EMAIL,
+        'paypal_form_url': settings.PAYPAL_FORM_URL,
+        'return_uri': request.build_absolute_uri(reverse('payment_return', args=('completed',))),
+        'cancel_uri': request.build_absolute_uri(reverse('payment_return', args=('canceled',))),
+    }
+    return render(request, 'website/join.html', context)
+
+def payment_return(request, payment_status):
+    if payment_status == 'completed':
+        messages.add_message(request, messages.SUCCESS, 'Thank you for your donation!')
+    else:
+        messages.add_message(request, messages.INFO, 'Your payment was canceled. Maybe next time.')
+    return redirect('join')
