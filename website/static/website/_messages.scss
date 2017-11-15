@@ -1,0 +1,28 @@
+.alert {
+  text-align: center;
+  position: relative;
+  -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+  -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+  0%   {left:0px;}
+  5%  {left:20px;}
+  10%  {left:-20px;}
+  15%  {left:0px;}
+  100% {left:0px;}
+}
+
+/* Standard syntax */
+@keyframes example {
+  0%   {left:0px;}
+  5%  {left:20px;}
+  10%  {left:-20px;}
+  15%  {left:0px;}
+  100% {left:0px;}
+}

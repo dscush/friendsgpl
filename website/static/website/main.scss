@@ -9,6 +9,7 @@ $icon-font-path: '../fonts/';
 
 @import 'header';
 @import 'footer';
+@import 'messages';
 //@import 'screensize_pull';
 
 .browserupgrade {
@@ -117,9 +118,6 @@ h3 {
   border: 2px solid $navbar_bg_color;
   border-radius: 5px;
   form {
-    #total-fg {
-      font-size: x-large;
-    }
     #total-fg {
       font-size: x-large;
       label::after {
