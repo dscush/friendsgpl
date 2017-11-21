@@ -6,6 +6,7 @@ urlpatterns = [
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^join/$', views.join, name='join'),
+    url(r'^volunteer/$', views.volunteer, name='volunteer'),
     url(r'^downunder/$', views.downunder, name='downunder'),
 
     url(r'^payment/(completed|canceled)/$', views.payment_return, name='payment_return'),

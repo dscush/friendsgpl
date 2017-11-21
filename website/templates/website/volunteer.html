@@ -1,0 +1,30 @@
+{% extends "website/base.html" %}
+{% load bootstrap %}
+{% block styles %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+{% endblock %}
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+{% endblock %}
+    {% block body %}
+        <div class="row row-content volunteer">
+            <div class="col-xs-12">
+                <h1>{% block title %}Volunteer{% endblock %}</h1>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <p>
+                    From serving as President to putting books on shelves, The Friends of the Grafton Public Library is run entirely by volunteers.  There are many opportunities to get involved with the Friends, with varying levels of committment and responsibility.  If you want to give back to your library, just fill out this form and we'll be in touch.
+                </p>
+                <p>
+                    There's a list of general areas we always need more help with under "Volunteer Opportunities," but if you have other ideas for how you can help the Friends and the library, we'd love to hear them in the "Notes" section.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <form role="form" action="" method="post">
+                    {% csrf_token %}
+                    {{ volunteer_form|bootstrap }}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    {% endblock %}

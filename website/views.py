@@ -5,7 +5,7 @@ from django.template import Context
 from django.template.loader import get_template
 from django.contrib import messages
 from django.conf import settings
-from website.forms import ContactForm
+from website.forms import ContactForm, VolunteerForm
 from membership.models import Committee
 
 def home(request):
@@ -61,3 +61,29 @@ def payment_return(request, payment_status):
     else:
         messages.add_message(request, messages.INFO, 'Your payment was canceled. Maybe next time.')
     return redirect('join')
+
+def volunteer(request):
+    form_class = VolunteerForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            print(request.POST)
+            name = request.POST.get('name', '')
+            email = request.POST.get('email', '')
+            notes = request.POST.get('notes', '')
+            volunteer_choices = '\n'.join(request.POST.getlist('volunteer', ['None selected']))
+
+            email = EmailMessage(
+                '[Friends of GPL] Volunteer Application',
+                'Name: {}\n\nVolunteer opportunities selected:\n{}\n\nNotes:\n{}'.format(name, volunteer_choices, notes),
+                '{} <{}>'.format(name, email),
+                ['info@friendsgpl.org'],
+                headers = {'Reply-To': email }
+            )
+            email.send()
+            messages.add_message(request, messages.SUCCESS, 'Thank you for volunteering!  We will get back to you soon.')
+            return redirect('volunteer')
+
+    return render(request, 'website/volunteer.html', {'volunteer_form': form_class})
