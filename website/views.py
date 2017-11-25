@@ -19,10 +19,9 @@ def about(request):
     return render(request, 'website/about.html', context)
 
 def contact(request):
-    form_class = ContactForm
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = ContactForm(data=request.POST)
 
         if form.is_valid():
             contact_name = request.POST.get('contact_name', '')
@@ -40,8 +39,10 @@ def contact(request):
             email.send()
             messages.add_message(request, messages.SUCCESS, 'Message Sent!  We will get back to you soon.')
             return redirect('contact')
+    else:
+        form = ContactForm()
 
-    return render(request, 'website/contact.html', {'contact_form': form_class,})
+    return render(request, 'website/contact.html', {'contact_form': form,})
 
 def downunder(request):
     return render(request, 'website/downunder.html')
@@ -63,13 +64,11 @@ def payment_return(request, payment_status):
     return redirect('join')
 
 def volunteer(request):
-    form_class = VolunteerForm
 
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = VolunteerForm(data=request.POST)
 
         if form.is_valid():
-            print(request.POST)
             name = request.POST.get('name', '')
             email = request.POST.get('email', '')
             notes = request.POST.get('notes', '')
@@ -85,5 +84,7 @@ def volunteer(request):
             email.send()
             messages.add_message(request, messages.SUCCESS, 'Thank you for volunteering!  We will get back to you soon.')
             return redirect('volunteer')
+    else:
+        form = VolunteerForm()
 
-    return render(request, 'website/volunteer.html', {'volunteer_form': form_class})
+    return render(request, 'website/volunteer.html', {'volunteer_form': form})
