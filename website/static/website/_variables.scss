@@ -9,3 +9,4 @@ $navpill_external_color: $navbar_color;
 $navpill_external_bg_color: darken($jumbotron_bg_color, 7%);
 $navpill_hover_bg_color: darken($jumbotron_bg_color, 20%);
 
+$icon-font-path: unquote("../node_modules/bootstrap-sass/assets/fonts/bootstrap/");
