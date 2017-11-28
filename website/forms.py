@@ -14,7 +14,9 @@ class ContactForm(forms.Form):
 
 class VolunteerForm(forms.Form):
     name = forms.CharField(required=True)
+    name.widget.attrs['required'] = 'required'
     email = forms.EmailField(required=True)
+    email.widget.attrs['required'] = 'required'
 
     OPTIONS = ((option, option) for option in (
         "Program Planning",
@@ -30,15 +32,10 @@ class VolunteerForm(forms.Form):
     ))
 
     volunteer = forms.MultipleChoiceField(
+        required=True,
         choices=OPTIONS,
-        widget=forms.SelectMultiple(attrs={'class':'selectpicker'}),
-        label='Volunteer Opportunities (select one or more):',
+        widget=forms.SelectMultiple(attrs={'class': 'selectpicker', 'required': 'required,'}),
+        label='Volunteer Opportunities (select one or more)',
     )
 
-    notes = forms.CharField(required=True, widget=forms.Textarea)
-
-    def __init__(self, *args, **kwargs):
-        super(VolunteerForm, self).__init__(*args, **kwargs)
-        self.fields['name'].label = "Name:"
-        self.fields['email'].label = "Email:"
-        self.fields['notes'].label = "Notes:"
+    notes = forms.CharField(required=False, widget=forms.Textarea)
