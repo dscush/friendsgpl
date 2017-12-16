@@ -1,5 +1,6 @@
 $brand_primary: #00A787;
-$link_color: #00A0FC;
+$brand_secondary: #00A0FC;
+$link_color: $brand_secondary;
 $jumbotron_bg_color: $brand_primary;                                                                                                                                                                                     
 $navbar_bg_color: darken($jumbotron_bg_color, 7%);
 $navpill_bg_color: $jumbotron_bg_color;

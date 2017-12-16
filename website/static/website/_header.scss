@@ -1,6 +1,6 @@
 /* Custom page header */
 header {
-	border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 
     .navbar-inverse {
         background: $navbar_bg_color;
@@ -49,17 +49,16 @@ header {
 
 /* Main marketing message and sign up button */
 .jumbotron {
-	margin: 0px auto;
-	padding: 20px 20px;
-	border-bottom: 1px solid #e5e5e5;
-	background: $jumbotron_bg_color;
-	color: #fff;
-	.btn {
-		font-size: 21px;
-		padding: 14px 24px;
-	}
-	h1 {
-	}
+    margin: 0px auto;
+    padding: 20px 20px;
+    border-bottom: 1px solid #e5e5e5;
+    background: $jumbotron_bg_color;
+    color: #fff;
+    .btn-secondary {
+        @include button-variant(white, $brand_secondary, darken($brand_secondary, 15%));
+        @include button-size(14px, 24px, 21px, $line-height-large, $btn-border-radius-large);
+        font-weight: bold;
+    }
 }
 
 
