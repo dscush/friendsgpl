@@ -143,3 +143,11 @@ h3 {
     color: #009CDE;
   }
 }
+
+.btn-secondary {
+    @include button-variant(white, $brand_secondary, darken($brand_secondary, 15%));
+    font-weight: bold;
+}
+.btn-xl {
+    @include button-size(14px, 24px, 21px, $line-height-large, $btn-border-radius-large);
+}
