@@ -15,34 +15,41 @@
             <div class="col-xs-12">
                 <h2>Committees</h2>
                 <p>There are several ways to get involved with the Friends.  In addition to volunteering at individual events, you can serve on our of our committees.  If you're interested joining a committee, just <a href="{% url 'contact' %}">let us know</a>.
-            </div>
-            {% for committee in committees %}
-            <div class="col-xs-12 col-sm-6">
-                <h3>{{ committee.name }}</h3>
-                <p>{{ committee.description }}</p>
-                <div class="table-responsive">
-                    <table class="table">
-                        <colgroup>
-                            <col class="col-xs-4">
-                            <col class="col-xs-4">
-                        </colgroup>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                        </tr>
-                        {% for role in committee.sorted_role_set %}
-                        <tr>
-                            {% if role.member.full_name %}
-                            <td>{{ role.member.full_name }}</td>
-                            {% else %}
-                            <td>Vacant (<a href="{% url 'contact' %}">apply</a>)</td>
-                            {% endif %}
-                            <td>{{ role.title }}</td>
-                        </tr>
-                        {% endfor %}
-                    </table>
+                <ul class="nav nav-tabs">
+                    {% for committee in committees %}
+                    <li{% if forloop.first %} class="active" {% endif %}><a data-toggle="tab" href="#committee-{{ committee.id }}">{{ committee.name }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="tab-content">
+                    {% for committee in committees %}
+                    <div id="committee-{{ committee.id }}" class="tab-pane fade{% if forloop.first %} in active{% endif %}">
+                        <h3>{{ committee.name }}</h3>
+                        <p>{{ committee.description }}</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <colgroup>
+                                    <col class="col-xs-4">
+                                    <col class="col-xs-4">
+                                </colgroup>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                </tr>
+                                {% for role in committee.sorted_role_set %}
+                                <tr>
+                                    {% if role.member.full_name %}
+                                    <td>{{ role.member.full_name }}</td>
+                                    {% else %}
+                                    <td>Vacant (<a href="{% url 'contact' %}">apply</a>)</td>
+                                    {% endif %}
+                                    <td>{{ role.title }}</td>
+                                </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
-            {% endfor %}
         </div>
     {% endblock %}
