@@ -45,6 +45,7 @@ $(document).ready(function() {
         if ($('#dues_level').val() == 'other') {
             set_total_and_fees($('#other_amount').val());
             $('#other_amount_fg').prop('hidden', '');
+            $('#other_amount').attr('required', true);
             $('#dues_level').prop('name', '');
             $('#other_amount').on('input', function () {
                 set_total_and_fees($('#other_amount').val());
@@ -52,6 +53,7 @@ $(document).ready(function() {
         } else {
             set_total_and_fees($('#dues_level').val());
             $('#other_amount_fg').prop('hidden', 'hidden');
+            $('#other_amount').attr('required', false);
             $('#other_amount').prop('name', '');
             $('#other_amount').off('input');
         }
