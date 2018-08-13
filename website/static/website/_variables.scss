@@ -11,3 +11,7 @@ $navpill_external_bg_color: darken($jumbotron_bg_color, 7%);
 $navpill_hover_bg_color: darken($jumbotron_bg_color, 20%);
 
 $icon-font-path: unquote("../node_modules/bootstrap-sass/assets/fonts/bootstrap/");
+
+$paypal_pay_text_color: #003087;
+$paypal_pal_text_color: #009CDE;
+$paypal_button_background: #ffbd40;

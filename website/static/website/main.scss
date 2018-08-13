@@ -137,21 +137,21 @@ h3 {
   font-weight: bold;
   font-family: "verdana";
   span:first-child {
-    color: #003087;
+    color: $paypal_pay_text_color;
   }
   span:last-child {
-    color: #009CDE;
+    color: $paypal_pal_text_color;
   }
   >a {
-    background-color: #ffbd40;
+    background-color: $paypal_button_background;
     padding: 8px 12px;
     border-radius: 50px;
     text-decoration: none;
     &:hover {
-      background-color: darken(#ffbd40, 8%);
+      background-color: darken($paypal_button_background, 8%);
     }
     &:active {
-      background-color: darken(#ffbd40, 16%);
+      background-color: darken($paypal_button_background, 16%);
     }
   }
 }
