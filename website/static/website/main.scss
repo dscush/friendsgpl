@@ -136,11 +136,23 @@ h3 {
   font-style: italic;
   font-weight: bold;
   font-family: "verdana";
-  :first-child {
+  span:first-child {
     color: #003087;
   }
-  :last-child {
+  span:last-child {
     color: #009CDE;
+  }
+  >a {
+    background-color: #ffbd40;
+    padding: 8px 12px;
+    border-radius: 50px;
+    text-decoration: none;
+    &:hover {
+      background-color: darken(#ffbd40, 8%);
+    }
+    &:active {
+      background-color: darken(#ffbd40, 16%);
+    }
   }
 }
 
