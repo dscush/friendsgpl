@@ -1,4 +1,6 @@
+from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -9,5 +11,10 @@ urlpatterns = [
     url(r'^volunteer/$', views.volunteer, name='volunteer'),
     url(r'^downunder/$', views.downunder, name='downunder'),
 
+    url(r'^summernote/', include('django_summernote.urls')),
+
     url(r'^payment/(completed|canceled)/$', views.payment_return, name='payment_return'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

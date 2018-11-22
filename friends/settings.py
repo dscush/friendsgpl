@@ -56,6 +56,7 @@ INSTALLED_APPS = (
     'adminplus',
     'compressor',
     'bootstrapform',
+    'django_summernote',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -149,3 +150,7 @@ EMAIL_PORT = config['Email'].getint('EmailPort')
 
 PAYPAL_EMAIL = config['PayPal'].get('Email')
 PAYPAL_FORM_URL = config['PayPal'].get('FormURL')
+
+# For Summernote
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
