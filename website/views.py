@@ -7,9 +7,11 @@ from django.contrib import messages
 from django.conf import settings
 from website.forms import ContactForm, VolunteerForm
 from membership.models import Committee
+from website.models import CMSBlock
 
 def home(request):
-    return render(request, 'website/home.html')
+    context = {'content': CMSBlock.objects.get(id='home').content}
+    return render(request, 'website/home.html', context)
 
 def about(request):
     committees = Committee.objects.all()

@@ -19,39 +19,7 @@
     {% block body %}
         <article class="row row-content home">
             <section class="col-xs-12 col-sm-4 col-md-5 col-lg-6">
-                <article>
-                    <h1>Who are the Friends?</h1>
-                    <p>The Friends of the Grafton Public Library is a volunteer organization that works to support our library through advocacy and activities designed to raise money for library needs which are not funded by our local, state, or federal government.</p>
-                    <p>We use the money we raise from the Down Under Bookstore, fundraisers, and memberships to offer a variety of programs to the Grafton community. These programs include museum passes, the summer reading program, exhibits, speakers, workshops, and concerts.</p>
-                    <p>For more info, see our <a href="{% url 'about' %}">about us</a> page.</p>
-                </article>
-                <article>
-                    <h1>We're Selling Tote Bags</h1>
-                    <p>Come and get a fabulous tote bag - it’s large, washable and has two pockets, including a zipper pocket perfect for holding a Library card or attaching a key chain.  They come in three color options, khaki with forest green embroidery, khaki with lime green embroidery, and poppy with navy embroidery.</p>
-                    <p>Bags are going for $20, but members of the Friends get them for $18.  All proceeds benefit the Grafton Public Library.  Stop by the library and get yours today!</p>
-                    <section class="row">
-                        <section class="col-xs-6 col-sm-12 col-lg-6">
-                            <a href="{% static 'website/images/all_bags.jpg' %}">
-                            <div class="thumbnail">
-                                <img src="{% static 'website/images/all_bags.jpg' %}" class="img-responsive" alt="Three tote bags">
-                                <div class="caption">
-                                    <p>Tote bags in all three color options.  Click for full size.</p>
-                                </div>
-                            </div>
-                            </a>
-                        </section>
-                        <section class="col-xs-6 col-sm-12 col-lg-6">
-                            <a href="{% static 'website/images/khaki_bag.jpg' %}">
-                            <div class="thumbnail">
-                                <img src="{% static 'website/images/khaki_bag.jpg' %}" class="img-responsive" alt="Tan tote bag">
-                                <div class="caption">
-                                    <p>Example of the khaki bag filled with stuff.  Click for full size.</p>
-                                </div>
-                            </div>
-                            </a>
-                        </section>
-                    </section>
-                </article>
+                {{ content | safe }}
             </section>
             <section class="col-xs-12 col-sm-8 col-md-7 col-lg-6">
                 <h1>News and Events</h1>
