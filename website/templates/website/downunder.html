@@ -4,51 +4,6 @@
             <div class="col-xs-12">
                 <h1>{% block title %}Down Under Bookstore{% endblock %}</h1>
             </div>
-            <div class="col-xs-12 col-sm-8 col-md-9">
-                <p>
-                    The Friends of the Grafton Public Library operate the Down Under Bookstore in the lower level of the Main Library. The Down Under Book Store is open the same hours as the Library. Books, CDs, videos, and paperbacks for adults are $1.00 each. Children’s books are four for $1.00. You will also find videotapes, books on tape, DVDs, and CDs. In the Main Reading Room, near the Friends Cafe, we sometimes offer current books in pristine condition for $3. At holiday time, we offer gift collections for $5-$10 dollars.
-                </p>
-                <p>
-                    The proceeds from Down Under support the Friends’ Museum Pass program and the many programs sponsored by the Friends. Donations to the Down Under Bookstore are most welcome. Donated gently used books, CDs, or videos should be in good, unmarked, saleable condition. Magazines, textbooks, Reader’s Digest Condensed Books, and outdated, old or ugly books are not useful, and the Friends ask to be saved the trouble and expense of disposing of them. Moldy books are unacceptable. Donations may be left in the plastic bins at the bottom of the stairs near the bookstore. Please do not put donations in the book drops.
-                </p>
-                <p>
-                    When you're done shopping at the Down Under Bookstore, you can pay at the circulation desk with cash or via <span class="paypal"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=Z3FFQNNAZU88W&lc=US&item_name=Down%20Under%20payment&no_note=1&no_shipping=1&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted"><span>Pay</span><span>Pal</span></a></span>
-                </p>
-            </div>
-            <div class="col-xs-12 col-sm-4 col-md-3">
-                <p>You will find a wide range of books, both fiction and nonfiction:</p>
-                <ul>
-                    <li>
-                        Classics
-                    </li>
-                    <li>
-                        Mysteries
-                    </li>
-                    <li>
-                        Children’s books
-                    </li>
-                    <li>
-                        Science fiction
-                    </li>
-                    <li>
-                        Cooking
-                    </li>
-                    <li>
-                        Crafts
-                    </li>
-                    <li>
-                        Self-help
-                    </li>
-                    <li>
-                        Parenting
-                    </li>
-                    <li>
-                        Travel
-                    </li>
-                    <li>
-                        Reference
-                    </li>
-                </ul>
-            </div>
+            {{ content | safe }}
         </div>
     {% endblock %}

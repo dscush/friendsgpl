@@ -47,7 +47,8 @@ def contact(request):
     return render(request, 'website/contact.html', {'contact_form': form,})
 
 def downunder(request):
-    return render(request, 'website/downunder.html')
+    context = {'content': CMSBlock.objects.get(id='downunder').content}
+    return render(request, 'website/downunder.html', context)
 
 def join(request):
     context = {
