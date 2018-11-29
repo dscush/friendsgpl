@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.conf import settings
 from website.forms import ContactForm, VolunteerForm
 from membership.models import Committee
-from website.models import CMSBlock
+from website.models import CMSBlock, Page
 
 def home(request):
     context = {'content': CMSBlock.objects.get(id='home').content}
@@ -91,3 +91,9 @@ def volunteer(request):
         form = VolunteerForm()
 
     return render(request, 'website/volunteer.html', {'volunteer_form': form})
+
+def page(request):
+    slug = request.path.strip('/')
+    page = Page.objects.get(slug=slug)
+    context = {'title': page.title, 'content': page.content}
+    return render(request, 'website/page.html', context)

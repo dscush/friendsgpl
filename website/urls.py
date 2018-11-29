@@ -2,6 +2,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from . import views
+from website.models import Page
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
@@ -18,3 +19,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+for page in Page.objects.all():
+    urlpatterns.append(url(r'^{}/$'.format(page.slug), views.page))

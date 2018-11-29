@@ -1,0 +1,9 @@
+{% extends "website/base.html" %}
+    {% block body %}
+        <div class="row row-content page">
+            <div class="col-xs-12">
+                <h1>{% block title %}{{ title }}{% endblock %}</h1>
+            </div>
+            {{ content | safe }}
+        </div>
+    {% endblock %}
